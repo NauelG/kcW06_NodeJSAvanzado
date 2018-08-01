@@ -16,9 +16,10 @@ conn.once('open', async() => {
             process.exit(1);
         }
         await initAnuncios(anuncios);
+        process.exit(0);
 
     } catch (err) {
-        console.error('Hubo un erro:', err);
+        console.error('Hubo un error:', err);
         process.exit(1);
     }
 });
