@@ -40,7 +40,6 @@ anuncioSchema.statics.listar = function(request) {
     if (type === 'compra') {
         filtro.venta = false
     }
-    console.log(filtro)
 
     const query = Anuncio.find(filtro);
     query.limit(limit);
@@ -48,6 +47,18 @@ anuncioSchema.statics.listar = function(request) {
     query.sort(sort);
     return query.exec();
 };
+
+anuncioSchema.statics.getTags = function() {
+    const query = Anuncio.find();
+    query.select("tags");
+    return query.exec();
+};
+
+anuncioSchema.statics.createAnuncio = function() {
+
+};
+
+// Modelo y Export
 
 const Anuncio = mongoose.model('Anuncio', anuncioSchema);
 
