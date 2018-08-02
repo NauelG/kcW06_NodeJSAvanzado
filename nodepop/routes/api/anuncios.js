@@ -8,7 +8,8 @@ const Anuncio = require('../../models/Anuncio');
 // GET - Devuelve una lista con todos los anuncios
 router.get('/', async(req, res, next) => {
 
-    const anunciosResult = await Anuncio.find();
+    const anunciosResult = await Anuncio.listar(req);
+    console.log(anunciosResult);
     res.json({ success: true, result: anunciosResult });
 });
 
