@@ -38,10 +38,10 @@ router.get('/tags', async(req, res, next) => {
 router.post('/', async(req, res, next) => {
     try {
         const datosAnuncio = req.body;
-
         const anuncio = new Anuncio(datosAnuncio);
 
-        anuncioCreado = await anuncio.save();
+        const anuncioCreado = await anuncio.save();
+        console.log(anuncio)
 
         res.json({ success: true, result: anuncioCreado });
     } catch (err) {
