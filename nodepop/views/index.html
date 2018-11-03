@@ -5,8 +5,64 @@
     
     <div class="container">
     
+    <h1>NodePOP - api REST</h1>
+    <p>
+        <img class="node" src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="nodeJS">
+    </p>
 
-    <h1><a id="NodePOP__api_REST_0"></a>NodePOP - api REST</h1> <p><img class="node" src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="nodeJS"></p> <p>Práctica del módulo de Fundamentos de Backend con NodeJS, Express y MongoDB de <strong>KeepCoding</strong>.</p> <h2><a id="Sobre_la_API_5"></a>Sobre la API</h2> <p>Esta API ha sido creada para el Bootcamp Web de KeepCoding. Consiste en un backend construido con Express, NodeJS y MongoDB.</p> <p>Todas las consultas a los anuncios almacenados se pueden hacer mediante dos vias:</p> <ul> <li>Consultas directas por url, que devolveran una visa con los anuncios filtrados.</li> <li>Consultas a la api como servicio, que devolverá un fichero JSON.</li> </ul> <h3><a id="Parmetros_de_consulta_13"></a>Parámetros de consulta</h3> <p>Ambas vías de consulta admiten los mismos parámetros. Un ejemplo de consulta seria:</p> <pre><code>://nombrededominio/api/anuncios?name=reloj&amp;tags=lifestyle&amp;type=venta&amp;range=10-100&amp;limit=3&amp;skip=3&amp;sort=nombre </code></pre> <p>Los parámetros aceptados son:</p> <ul> <li><strong>Name</strong>: El nombre de un artículo. No distingue minúsculas de mayúsculas.</li> <li><strong>Tags</strong>: El nombre de un tag o categoría.</li> <li><strong>Type</strong>: Venta o Compra según el tipo de anuncio.</li> <li><strong>Range</strong>: Precio mínimo y máximo separado por un guión.</li> <li><strong>Limit</strong>: Número máximo de anuncios a devolver.</li> <li><strong>Skip</strong>: Número de anuncios a saltar. En caso de paginación.</li> <li><strong>Sort</strong>: Campo por el cuál queremos ordenar (nombre, precio). En negativo si querémos un orden descendente.</li> </ul> <h2><a id="Sobre_su_desarrollo_29"></a>Sobre su desarrollo</h2> <h3><a id="Instalacin_31"></a>Instalación</h3> <p>Para inciar la aplicación instala sus dependencias:</p> <pre><code class="language-shell">$ npm install </code></pre> <p>Con el módulo <code>dotenv</code> de node, las variables de entorno se cargan dinámicamente. Copia el archivo <code>.env.example</code> en <code>.env</code> y revisa los valores.</p> <h2><a id="Base_de_datos_40"></a>Base de datos</h2> <p>Para inicializar la base de datos con documentos de prueba ejecuta:</p> <pre><code class="language-shell">$ npm run install-db </code></pre>
+    <p>
+        <%= __('Advanced backend exercice for the Web Bootcamp by') %> <strong>KeepCoding</strong>.
+    </p>
+    
+    <h2><%= __('About de API') %></h2>
+    <p>
+        Esta API ha sido creada para el Bootcamp Web de KeepCoding. Consiste en un backend construido con Express, NodeJS y MongoDB.</p> <p>Todas las consultas a los anuncios almacenados se pueden hacer mediante dos vias:
+    </p>
+    <ul>
+        <li>Consultas directas por url, que devolveran una visa con los anuncios filtrados.</li>
+        <li>Consultas a la api como servicio, que devolverá un fichero JSON.</li>
+    </ul>
+    
+    <h3><%= __('Query params') %></h3>
+    <p>
+        Ambas vías de consulta admiten los mismos parámetros. Un ejemplo de consulta seria:
+    </p>
+    <pre>
+        <code>://nombrededominio/api/anuncios?name=reloj&amp;tags=lifestyle&amp;type=venta&amp;range=10-100&amp;limit=3&amp;skip=3&amp;sort=nombre </code>
+    </pre>
+    <p>
+        Los parámetros aceptados son:
+    </p>
+    <ul>
+        <li><strong>Name</strong>: El nombre de un artículo. No distingue minúsculas de mayúsculas.</li>
+        <li><strong>Tags</strong>: El nombre de un tag o categoría.</li>
+        <li><strong>Type</strong>: Venta o Compra según el tipo de anuncio.</li>
+        <li><strong>Range</strong>: Precio mínimo y máximo separado por un guión.</li>
+        <li><strong>Limit</strong>: Número máximo de anuncios a devolver.</li>
+        <li><strong>Skip</strong>: Número de anuncios a saltar. En caso de paginación.</li>
+        <li><strong>Sort</strong>: Campo por el cuál queremos ordenar (nombre, precio). En negativo si querémos un orden descendente.</li>
+    </ul>
+
+    <h2>Sobre su desarrollo</h2>
+    
+    <h3>Instalación</h3>
+    <p>
+        Para inciar la aplicación instala sus dependencias:
+    </p>
+    <pre>
+        <code class="language-shell">$ npm install </code>
+    </pre>
+    <p>
+        Con el módulo <code>dotenv</code> de node, las variables de entorno se cargan dinámicamente. Copia el archivo <code>.env.example</code> en <code>.env</code> y revisa los valores.
+    </p>
+    
+    <h2>Base de datos</h2>
+    <p>
+        Para inicializar la base de datos con documentos de prueba ejecuta:
+    </p>
+    <pre>
+        <code class="language-shell">$ npm run install-db </code>
+    </pre>
 
 
 
