@@ -1,10 +1,14 @@
 # NodePOP - api REST
+<p align="center">
 
-![nodeJS](https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg)
+  <img alt="nodeJS" src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg">
+</p>
 
-Práctica del módulo de Fundamentos de Backend con NodeJS, Express y MongoDB de **KeepCoding**.
+Práctica del módulo de Backend Avanzado con NodeJS, Express y MongoDB de **KeepCoding**.
 
 ## Sobre la API
+
+*NEW RELEASE*
 
 Esta API ha sido creada para el Bootcamp Web de KeepCoding. Consiste en un backend construido con Express, NodeJS y MongoDB.
 
