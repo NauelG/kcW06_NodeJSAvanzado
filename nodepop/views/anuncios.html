@@ -1,7 +1,7 @@
-<%- include('head', {title: title}) %>
+<% include head.html {title: title} %>
 
 <body>
-<%- include('header', {title: title})%>
+<% include header.html {title: title} %>
 
     <div class="container">
         <nav class="breadcrumb">
@@ -11,7 +11,7 @@
             <% anunciosResult.forEach(function(anuncio){%>
                 <% if(anuncio.venta) { %>
                     <div class="card bg-light border-secondary">
-                        <%- include('./anuncio', {anuncio:anuncio}) %>
+                        <% include anuncio.html  {anuncio:anuncio} %>
                     </div>
                 <% }; %>
             <%})%>
@@ -24,7 +24,7 @@
             <% anunciosResult.forEach(function(anuncio){%>
                 <% if(!anuncio.venta) { %>
                     <div class="card bg-light border-secondary">
-                        <%- include('./anuncio', {anuncio:anuncio}) %>
+                        <% include anuncio.html {anuncio:anuncio} %>
                     </div>
                 <% }; %>
             <%})%>
@@ -34,7 +34,7 @@
 
 
 
-    <%- include('footer') %>
+    <% include footer.html %>
 
 </body>
 
