@@ -18,23 +18,34 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Conectamos a la Base de Datos
-require('./lib/connectDB');
+/**
+ * Multiidioma de la app
+ */
+const i18n = require('./lib/i18nConfig')();
+app.use(i18n.init);
 
-// Cargamos el modelo
+/**
+ * Connexión a la DB y carga de modelo
+ */
+require('./lib/connectDB');
 require('./models/Anuncio');
 
-
-// API  V1 ROUTES
+/**
+ * Rutas de la primera versión de la api
+ */
 app.use('/api/anuncios', require('./routes/api/v1/anuncios'));
 
-// API V2 ROUTES
+/**
+ * Rutas de la segunda versión de la api
+ */
 app.use('/apiv2/anuncios', require('./routes/api/v2/anuncios'));
 app.use('/apiv2/authenticate', require('./routes/api/v2/authenticate'))
 
-
-// WEB ROUTES
+/**
+ * Rutas del sitio WEB
+ */
 app.use('/anuncios', require('./routes/web/anuncios'));
+app.use('/locale', require('./routes/web/locale'));
 app.use('/', require('./routes/web/index'));
 
 // catch 404 and forward to error handler
