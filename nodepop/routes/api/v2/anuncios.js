@@ -2,15 +2,18 @@
 
 const express = require('express');
 const router = express.Router();
+const authGuard = require('../../../lib/AuthGuard');
 
 const Anuncio = require('../../../models/Anuncio');
+
+router.use(authGuard());
 
 // GET - Devuelve una lista con todos los anuncios
 router.get('/', async(req, res, next) => {
     try {
         const anunciosResult = await Anuncio.listar(req);
         console.log(anunciosResult);
-        res.json({ success: true, result: anunciosResult });
+        res.status(200).json({ success: true, result: anunciosResult });
     } catch (err) {
         next(err);
     }
@@ -28,7 +31,7 @@ router.get('/tags', async(req, res, next) => {
                 };
             });
         });
-        res.json({ success: true, result: tagsReturn });
+        res.status(200).json({ success: true, result: tagsReturn });
     } catch (err) {
         next(err);
     }
@@ -43,7 +46,7 @@ router.post('/', async(req, res, next) => {
         const anuncioCreado = await anuncio.save();
         console.log(anuncio)
 
-        res.json({ success: true, result: anuncioCreado });
+        res.status(200).json({ success: true, result: anuncioCreado });
     } catch (err) {
         next(err);
     }
