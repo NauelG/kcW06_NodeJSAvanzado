@@ -23,13 +23,18 @@ require('./lib/connectDB');
 // Cargamos el modelo
 require('./models/Anuncio');
 
-// API ROUTES
-app.use('/api/anuncios', require('./routes/api/anuncios'));
+
+// API  V1 ROUTES
+app.use('/api/anuncios', require('./routes/api/v1/anuncios'));
+
+// API V2 ROUTES
+app.use('/apiv2/anuncios', require('./routes/api/v2/anuncios'));
+app.use('/apiv2/authenticate', require('./routes/api/v2/authenticate'))
+
 
 // WEB ROUTES
-app.use('/anuncios', require('./routes/anuncios'));
-
-app.use('/', require('./routes/index'));
+app.use('/anuncios', require('./routes/web/anuncios'));
+app.use('/', require('./routes/web/index'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

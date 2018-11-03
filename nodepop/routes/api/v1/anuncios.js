@@ -3,9 +3,11 @@
 const express = require('express');
 const router = express.Router();
 
-const Anuncio = require('../../models/Anuncio');
+const Anuncio = require('../../../models/Anuncio');
 
-// GET - Devuelve una lista con todos los anuncios
+/**
+ * @api {get} /
+ */
 router.get('/', async(req, res, next) => {
     try {
         const anunciosResult = await Anuncio.listar(req);
