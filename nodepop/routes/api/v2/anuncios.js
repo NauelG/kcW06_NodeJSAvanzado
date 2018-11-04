@@ -45,27 +45,32 @@ router.get('/tags', async(req, res, next) => {
 router.post('/', upload.single('foto'), async(req, res, next) => {
     try {
         const datosAnuncio = req.body;
-        datosAnuncio.foto = req.file.filename;
-
-        requester.send({
-            type: 'resize',
-            filename: req.file.filename,
-            destination: req.file.destination
-        }, resized => {
-            datosAnuncio.thumbnail = resized;
-            console.log(datosAnuncio);
-            Anuncio.findByIdAndUpdate(anuncioCreado._id, datosAnuncio, {new: true}, (err, anuncioActualizado) => {
-                if (err) {
-                    console.log( err );
-
-                }
-                console.log('Anuncio actualizado', anuncioActualizado);
-            });
-        })
 
         const anuncio = new Anuncio(datosAnuncio);
 
         const anuncioCreado = await anuncio.save();
+
+        if (req.file) {
+
+            datosAnuncio.foto = req.file.filename;
+
+            requester.send({
+                type: 'resize',
+                filename: req.file.filename,
+                destination: req.file.destination
+            }, resized => {
+                datosAnuncio.thumbnail = resized;
+                console.log(datosAnuncio);
+                Anuncio.findByIdAndUpdate(anuncioCreado._id, datosAnuncio, {new: true}, (err, anuncioActualizado) => {
+                    if (err) {
+                        console.log( err );
+
+                    }
+                    console.log('Anuncio actualizado', anuncioActualizado);
+                });
+            })
+
+        }
 
         res.status(200).json({ success: true, result: anuncioCreado });
     } catch (err) {

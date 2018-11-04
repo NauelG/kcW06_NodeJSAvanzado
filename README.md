@@ -8,8 +8,6 @@ Práctica del módulo de Backend Avanzado con NodeJS, Express y MongoDB de **Kee
 
 ## Sobre la API
 
-*NEW RELEASE*
-
 Esta API ha sido creada para el Bootcamp Web de KeepCoding. Consiste en un backend construido con Express, NodeJS y MongoDB.
 
 Todas las consultas a los anuncios almacenados se pueden hacer mediante dos vias:
@@ -31,6 +29,40 @@ Los parámetros aceptados son:
 - **Limit**: Número máximo de anuncios a devolver.
 - **Skip**: Número de anuncios a saltar. En caso de paginación.
 - **Sort**: Campo por el cuál queremos ordenar (nombre, precio). En negativo si querémos un orden descendente.
+
+### New Release 11/2018
+
+La api ha sido actualizada incluyendo diferentes mejroas. La versión anterior sigue disponible durante un tiempo, aunque se recomienda migrar a la versión nueva.
+
+```
+GET://nombrededominio/apiv2/anuncios?token=TOKEN&name=reloj&tags=lifestyle&type=venta&range=10-100&limit=3&skip=3&sort=nombre
+```
+
+Las mejoras incluidas son:
+
+#### Seguridad de la API
+Se ha securizado toda la API requiriendo un token de usuario para todas sus consultas. El token se puede obtener haciendo login a:
+
+```
+POST://nombrededominio/apiv2//apiv2/authenticate
+```
+
+Con un nombre de usuario y una contraseña valida en el body.
+
+#### Internacionalización de la vista
+
+La vista de anuncios se ha internacionalizado con el módulo `i18n`. El index renderiza la documentación, la cual esta pendiente de traducir.
+
+#### Micro servicio de minificación de imagenes
+
+La ruta de subida de anuncios a la api:
+
+```
+POST://nombrededominio/apiv2//apiv2/anuncios
+```
+
+Permite enviar un fichero de imagen en el campo foto. Si la api recibe esta imagen la guarda en el directorio de imagenes, guarda la ruta en la DB i hace lo mismo con su correspondiente thumbnail a traves de un microservicio creado en cote.
+
 
 ## Sobre su desarrollo
 
