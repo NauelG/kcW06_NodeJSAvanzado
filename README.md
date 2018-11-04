@@ -30,7 +30,7 @@ Los parámetros aceptados son:
 - **Skip**: Número de anuncios a saltar. En caso de paginación.
 - **Sort**: Campo por el cuál queremos ordenar (nombre, precio). En negativo si querémos un orden descendente.
 
-### New Release 11/2018
+### New Release 11-2018
 
 La api ha sido actualizada incluyendo diferentes mejroas. La versión anterior sigue disponible durante un tiempo, aunque se recomienda migrar a la versión nueva.
 
