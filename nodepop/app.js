@@ -31,6 +31,11 @@ require('./lib/connectDB');
 require('./models/Anuncio');
 
 /**
+ * Carga del micro servicio de resize
+ */
+const resizeService = require('./services/imageResizeService');
+
+/**
  * Rutas de la primera versión de la api
  */
 app.use('/api/anuncios', require('./routes/api/v1/anuncios'));

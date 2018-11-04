@@ -3,6 +3,10 @@
 const express = require('express');
 const router = express.Router();
 const authGuard = require('../../../lib/AuthGuard');
+const upload = require('../../../lib/uploadConfig');
+const cote = require('cote');
+
+const requester = new cote.Requester({ name: 'Image resize requester'})
 
 const Anuncio = require('../../../models/Anuncio');
 
@@ -38,13 +42,30 @@ router.get('/tags', async(req, res, next) => {
 });
 
 // POST Crea un nuevo anuncio
-router.post('/', async(req, res, next) => {
+router.post('/', upload.single('foto'), async(req, res, next) => {
     try {
         const datosAnuncio = req.body;
+        datosAnuncio.foto = req.file.filename;
+
+        requester.send({
+            type: 'resize',
+            filename: req.file.filename,
+            destination: req.file.destination
+        }, resized => {
+            datosAnuncio.thumbnail = resized;
+            console.log(datosAnuncio);
+            Anuncio.findByIdAndUpdate(anuncioCreado._id, datosAnuncio, {new: true}, (err, anuncioActualizado) => {
+                if (err) {
+                    console.log( err );
+
+                }
+                console.log('Anuncio actualizado', anuncioActualizado);
+            });
+        })
+
         const anuncio = new Anuncio(datosAnuncio);
 
         const anuncioCreado = await anuncio.save();
-        console.log(anuncio)
 
         res.status(200).json({ success: true, result: anuncioCreado });
     } catch (err) {
